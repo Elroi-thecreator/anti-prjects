@@ -1,0 +1,34 @@
+id: ARCH-WS-001
+type: architecture_standard
+title: Monorepo Workspace Git Isolation & Cross-Project Knowledge Federation
+domain: architecture
+status: approved
+version: 1.0.0
+authority:
+  level: official
+  confidence: high
+owner:
+  team: core_architecture
+
+applies_to:
+  - workspace
+  - bibleweb
+  - Meet_recorder_chrome_extension
+
+rule:
+  "The Anti-Projects root repository (`E:/anti-prjects`) organizes independent production codebases (`bibleweb` and `Meet_recorder_chrome_extension`), federating shared architectural standards and AI-native knowledge graphs while maintaining independent version control, deployment lifecycles, and distribution channels for each subproject."
+
+do:
+  - "Maintain a dedicated `knowledge/` directory inside every subproject codebase adhering to the AI-native knowledge unit taxonomy (`index.yaml`, `architecture/`, `decisions/`, `development/`, `product/`)."
+  - "Keep project dependencies strictly segregated: Python virtualenvs for `bibleweb` and Chrome extension manifest/npm dependencies for `Meet_recorder_chrome_extension`."
+  - "Ensure CI/CD workflows and automated release actions run within their respective project directory contexts."
+  - "Provide clear cross-project indexing from the workspace master catalog (`knowledge/index.yaml`)."
+
+dont:
+  - "Do not cross-contaminate package dependencies between different subprojects."
+  - "Do not commit temporary compilation outputs (`windows_app/dist/`, `.zip` bundles, virtualenvs) to the root repository."
+
+reason:
+  "Federated knowledge governance allows each project to maintain autonomous build and release lifecycles while preserving global architectural discipline and instant context loading for AI coding agents."
+
+related_items: []
